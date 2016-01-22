@@ -1,0 +1,26 @@
+PODS:
+  - Alamofire (3.1.5)
+  - AlamofireXmlToObjects (1.0.1):
+    - Alamofire
+    - EVReflection
+    - XMLDictionary
+  - EVReflection (2.15.4)
+  - SwiftyJSON (2.3.2)
+  - SWXMLHash (2.0.2)
+  - XMLDictionary (1.4)
+
+DEPENDENCIES:
+  - Alamofire (~> 3.0)
+  - AlamofireXmlToObjects
+  - SwiftyJSON
+  - SWXMLHash (~> 2.0.0)
+
+SPEC CHECKSUMS:
+  Alamofire: 5f730ba29fd113b7ddd71c1e65d0c630acf5d7b0
+  AlamofireXmlToObjects: 9eba9ad4be933204afcb8525cced4c04bf51b49a
+  EVReflection: e2f49e8b2c1fa3a700d235f8c054b22daafe888d
+  SwiftyJSON: 04ccea08915aa0109039157c7974cf0298da292a
+  SWXMLHash: 9e6bd7db2e8275eaf3d2082265623d6e749e169d
+  XMLDictionary: f9f51601ba76678b594ab485f2b00ec1fed23724
+
+COCOAPODS: 0.39.0
