@@ -10,3 +10,7 @@ If you would like to build and run this project, you would need to add an `APIKe
 
 #### CocoaPods
 This project uses [CocoaPods](https://cocoapods.org), however, (with your own API Key) you should be able to hit the ground running as the Pods are included in the source control. If you're having trouble due to CocoaPods, I recommend running a `pod install`.
+
+## Screenshots
+
+![lines](https://github.com/JakeRL/SwiftL/blob/master/Screen%20Shots/lines.jpg) ![stations](https://github.com/JakeRL/SwiftL/blob/master/Screen%20Shots/stations.jpg) ![arrivals](https://github.com/JakeRL/SwiftL/blob/master/Screen%20Shots/arrivals.jpg)
