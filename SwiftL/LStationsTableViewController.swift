@@ -18,9 +18,11 @@ class LStationsTableViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
-        self.title = line?.title()
+        
+        self.title = "\(line!.title()) Line Stations"
+        
+        // cut down the back button in the next view controller to the name of the line for less overflow in the navigation bar
+        self.navigationItem.backBarButtonItem = UIBarButtonItem(title: line!.title(), style: UIBarButtonItemStyle.Plain, target: nil, action: nil)
         
         APIManager.sharedManager.getStationsForLine(line!) { stations, error in
             self.lineStops = stations

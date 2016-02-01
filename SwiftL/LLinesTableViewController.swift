@@ -16,6 +16,8 @@ class LLinesTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        self.title = "L Lines"
+        
         lines = Line.list()
     }
 

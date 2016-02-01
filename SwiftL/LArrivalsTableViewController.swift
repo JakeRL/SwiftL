@@ -18,7 +18,7 @@ class LArrivalsTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.title = station!["STATION_NAME"].stringValue
+        self.title = "\(station!["STATION_NAME"].stringValue) Arrival Times"
         
         APIManager.sharedManager.getArrivalsForStation(station!){ arrivals, error in
             self.arrivals = arrivals

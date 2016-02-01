@@ -8,11 +8,8 @@
 
 import UIKit
 import SWXMLHash
-import AlamofireXmlToObjects
-import EVReflection
-import XMLDictionary
 
-class Arrival: EVObject {
+class Arrival: NSObject {
     // Numeric GTFS parent station ID which this prediction is for (five digits in 4xxxx range) (matches “mapid” specified by requestor in query)
     let staId: Int
     
@@ -48,58 +45,41 @@ class Arrival: EVObject {
     // yyyyMMdd HH:mm:ss (24-hour format, time local to Chicago)
     let arrT: String
     
-//    // Indicates that Train Tracker is now declaring “Approaching” or “Due” on site for this train
-//    let isApp: Int
-//    
-//    // Boolean flag to indicate whether this is a live prediction or based on schedule in lieu of live data
-//    let isSch: String
-//    
-//    // Boolean flag to indicate whether a potential fault has been detected (see note below)
-//    let isFlt: String
-//    
-//    // Boolean flag to indicate whether a train is considered “delayed” in Train Tracker
-//    let isDly: String
-//    
-//    // Latitude position of the train in decimal degrees
-//    let lat: Double?
-//    
-//    // Longitude position of the train in decimal degrees
-//    let lon: Double?
-//    
-//    // Heading, expressed in standard bearing degrees (0 = North, 90 = East, 180 = South, and 270 = West; range is 0 to 359, progressing clockwise)
-//    let heading: Int?
+    // Indicates that Train Tracker is now declaring “Approaching” or “Due” on site for this train
+    var isApp: Int?
+  
+    // Boolean flag to indicate whether this is a live prediction or based on schedule in lieu of live data
+    var isSch: String?
+
+    // Boolean flag to indicate whether a potential fault has been detected (see note below)
+    var isFlt: String?
+
+    // Boolean flag to indicate whether a train is considered “delayed” in Train Tracker
+    var isDly: String?
+    
+    // Latitude position of the train in decimal degrees
+    var lat: Double?
+
+    // Longitude position of the train in decimal degrees
+    var lon: Double?
+    
+    // Heading, expressed in standard bearing degrees (0 = North, 90 = East, 180 = South, and 270 = West; range is 0 to 359, progressing clockwise)
+    var heading: Int?
     
     init(arrival: XMLIndexer) {
-        staId = Int(arrival["staId"].element!.text!)!
-        stpId = Int(arrival["stpId"].element!.text!)!
-        staNm = arrival["staNm"].element!.text!
-        stpDe = arrival["stpDe"].element!.text!
-        rn = Int(arrival["rn"].element!.text!)!
-        rt = arrival["rt"].element!.text!
-        destSt = Int(arrival["destSt"].element!.text!)!
+        // String values
+        staNm  = arrival["staNm"].element!.text!
+        stpDe  = arrival["stpDe"].element!.text!
+        rt     = arrival["rt"].element!.text!
         destNm = arrival["destNm"].element!.text!
-        trDr = Int(arrival["trDr"].element!.text!)!
-        prdt = arrival["prdt"].element!.text!
-        arrT = arrival["arrT"].element!.text!
+        prdt   = arrival["prdt"].element!.text!
+        arrT   = arrival["arrT"].element!.text!
+        
+        // Int values
+        staId  = Int(arrival["staId"].element!.text!)!
+        stpId  = Int(arrival["stpId"].element!.text!)!
+        rn     = Int(arrival["rn"].element!.text!)!
+        destSt = Int(arrival["destSt"].element!.text!)!
+        trDr   = Int(arrival["trDr"].element!.text!)!
     }
-    required convenience init(fileNameInDocuments: String) {
-        fatalError("init(fileNameInDocuments:) has not been implemented")
-    }
-
-    required convenience init(json: String?) {
-        fatalError("init(json:) has not been implemented")
-    }
-
-    required convenience init(dictionary: NSDictionary) {
-        fatalError("init(dictionary:) has not been implemented")
-    }
-
-    required convenience init(fileNameInTemp: String) {
-        fatalError("init(fileNameInTemp:) has not been implemented")
-    }
-
-    required init() {
-        fatalError("init() has not been implemented")
-    }
-
 }

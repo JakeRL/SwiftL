@@ -11,12 +11,27 @@ import Alamofire
 import SwiftyJSON
 import SWXMLHash
 
-let kAPIKey     = NSURL(string: "b00b70fd51d44ec0ba0fc3a3885b4616")!
+let kAPIKeyName = "CTA"
 let kAPIBaseURL = NSURL(string: "http://lapi.transitchicago.com/api/1.0/")!
+
+// Arrivals API
+let arrivalsAPIEndPoint               = "ttarrivals.aspx"
+let numericStationIdentifierParameter = "mapid" // required if stpid not provided
+let numericStopIdentifierParameter    = "stpid" // required if mapid not provided
+let maximumResultsParameter           = "max"   // optional
+let routeCodeParameter                = "rt"    // optional
+
+// Follow Train API
+let followAPIEndPoint       = "ttfollow.aspx"
+let trainRunNumberParameter = "runnumber"       // required
+
+// Locations API
+let locationsAPIEndPoint = "ttpositions.aspx"
+let trainRoutesParameter = "rt"                 // required
 
 class APIManager: NSObject {
     static let sharedManager = APIManager()
-    
+
     func getStationsForLine (line: Line, completion: (stations: [JSON], error: NSError?) -> Void) {
         if let path = NSBundle.mainBundle().pathForResource("cta_L_stops", ofType: "json") {
             do {
@@ -43,7 +58,7 @@ class APIManager: NSObject {
     
     func getArrivalsForStation (station: JSON, completion: (arrivals: [Arrival], error: NSError?) -> Void) {
         
-        let endPoint: String = "\(kAPIBaseURL)\(arrivalsAPIEndPoint)?key=\(kAPIKey)&mapid=\(station["MAP_ID"])"
+        let endPoint: String = "\(kAPIBaseURL)\(arrivalsAPIEndPoint)?key=\(apiKey())&mapid=\(station["MAP_ID"])"
     
         Alamofire.request(.GET, endPoint)
                  .response { request, response, data, error in
@@ -59,5 +74,15 @@ class APIManager: NSObject {
                     
                     completion(arrivals: arrivalsList, error: error)
         }
+    }
+    
+    func apiKey() -> String {
+        if let filePath = NSBundle.mainBundle().pathForResource("APIKeys", ofType:"plist") {
+            let plist = NSDictionary(contentsOfFile:filePath)
+            if let value: String = plist?.objectForKey(kAPIKeyName) as? String {
+                return value
+            }
+        }
+        return ""
     }
 }

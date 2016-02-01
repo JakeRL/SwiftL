@@ -19,35 +19,6 @@ enum SegueIdentifier: String {
     case SegueToLArrivalsTableView = "SegueToLArrivalsTableView"
 }
 
-//enum id <T1, T2> {
-//
-//}
-
-struct ArrivalsAPI {
-    let endpoint = "ttarrivals.aspx"
-    let stationId:  Int
-    let stopId:     Int
-    let maxResults: Int?
-    let routeId:    String?
-    
-    var stationIdParameter = "mapid"
-    var stopIdParameter = "stpid"
-    var maxResultsParameter = "max"
-}
-
-// Arrivals API
-let arrivalsAPIEndPoint               = "ttarrivals.aspx"
-let numericStationIdentifierParameter = "mapid" // required if stpid not provided
-let numericStopIdentifierParameter    = "stpid" // required if mapid not provided
-let maximumResultsParameter           = "max"   // optional
-let routeCodeParameter                = "rt"    // optional
-
-let followAPIEndPoint       = "ttfollow.aspx"
-let trainRunNumberParameter = "runnumber"       // required
-
-let locationsAPIEndPoint = "ttpositions.aspx"
-let trainRoutesParameter = "rt"                 // required
-
 enum Line {
     case Red, Blue, Brown, Green, Orange, Purple, PurpleExpress, Pink, Yellow
     
