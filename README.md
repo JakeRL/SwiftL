@@ -8,5 +8,5 @@ An API Key is required to use the CTA Train Tracker API. Information on how to a
 
 If you would like to build and run this project, you would need to add an `APIKeys.plist` file to the project and add your own API Key as the String value for the `CTA` key.
 
-#### Cocoapods
-This project uses [Cocoapods](https://cocoapods.org), however, (with your own API Key) you should be able to hit the ground running as the Pods are included in the source control. If you're having trouble due to Cocoapods, I recommend running a `pod install`.
+#### CocoaPods
+This project uses [CocoaPods](https://cocoapods.org), however, (with your own API Key) you should be able to hit the ground running as the Pods are included in the source control. If you're having trouble due to CocoaPods, I recommend running a `pod install`.
